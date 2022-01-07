@@ -1,9 +1,11 @@
 package com.opay.opaybanknotification.endpoint;
 
 import com.opay.opaybanknotification.dto.TransactionDto;
+import com.opay.opaybanknotification.service.GetTransactionService;
+import com.opay.opaybanknotification.utils.ResponseConstants;
 import lombok.extern.log4j.Log4j;
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,21 +26,29 @@ import java.util.Map;
 public class TransactionEndPoint {
 
     private final Environment env;
+    private final GetTransactionService getTransactionService;
 
-    public TransactionEndPoint(Environment env) {
+    public TransactionEndPoint(Environment env,
+                               GetTransactionService getTransactionService) {
         this.env = env;
+        this.getTransactionService = getTransactionService;
     }
 
 
+    /**
+     * Get Transaction Endpoint
+     * @param transactionDto
+     * @return
+     */
     @PostMapping(value = "/opay/bankNotifcation", produces = "application/json")
-    public List<String> getTransactionDetails(@RequestBody TransactionDto reqForInforFromCmsDto) {
+    public List<String> getTransactionDetails(@RequestBody TransactionDto transactionDto) {
 
         Map<String, Object> response = new HashMap<>();
 
         List<String> responseList = new ArrayList<>();
 
         try {
-            response = initCustomsReqForInfoService.initiateRequsetForInforl( reqForInforFromCmsDto );
+            response = getTransactionService.getTransaction(transactionDto);
         }
         catch (Exception e) {
             response.putIfAbsent( ResponseConstants.ERRORS, e.getCause() );
