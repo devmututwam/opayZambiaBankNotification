@@ -34,11 +34,12 @@ public class TransactionEndPoint {
 
 
     /**
-     * Get Transaction Endpoint
+     * CashIn Transaction Endpoint
+     * This is an endpoint for cash in from bank to Opay E-Wallet
      * @param transactionDto
      * @return
      */
-    @PostMapping(value = "/opay/bankNotifcation", produces = "application/json")
+    @PostMapping(value = "/opay/cashIn", produces = "application/json")
     public List<String> getTransactionDetails(@RequestBody TransactionDto transactionDto) {
 
         Map<String, Object> response = new HashMap<>();
