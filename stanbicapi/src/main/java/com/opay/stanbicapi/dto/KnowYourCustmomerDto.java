@@ -2,8 +2,9 @@ package com.opay.stanbicapi.dto;
 
 /**
  * Know Your Customer Data Transfer Object
+ * @Author MututwaM
  */
-public class KycDto {
+public class KnowYourCustmomerDto {
 
     public String mobileNumber;
     public String customerName;

@@ -1,16 +1,17 @@
 package com.opay.stanbicapi.service;
 
 
-import com.opay.stanbicapi.dto.KycDto;
-import com.opay.stanbicapi.dto.TransactionDto;
+import com.opay.stanbicapi.dto.KnowYourCustmomerDto;
 import com.opay.stanbicapi.utils.ResponseConstants;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
+/**
+ * Know Your Customer Service
+ * This class manages the request to get customer details
+ * @Author MututwaM
+ */
 @Service
 public class KnowYourCustomerService {
 
@@ -20,12 +21,13 @@ public class KnowYourCustomerService {
      * @param mobileNumber
      * @return kycDto
      */
-    public KycDto getCustomerDetails(String mobileNumber){
+    public KnowYourCustmomerDto getCustomerDetails(String mobileNumber){
 
-        KycDto response = new KycDto();
+        KnowYourCustmomerDto response = new KnowYourCustmomerDto();
 
-        Timestamp curentTime = new Timestamp(System.currentTimeMillis());
+        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
+        //validate to ensure the mobile number field is not empty
         if("".equalsIgnoreCase(mobileNumber)){
             response.setStatus(ResponseConstants.STATUS_ERROR);
             response.setMessage("No information received. Mobile number field empty");
@@ -34,7 +36,7 @@ public class KnowYourCustomerService {
 
         //Do the processing here
         /**
-         * Fetch the Customer Details from the database
+         * Fetch the required data here
          * and populate response Data Transfer Object here
          * then return the response
          */

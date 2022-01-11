@@ -3,17 +3,16 @@ package com.opay.stanbicapi.dto;
 import java.math.BigDecimal;
 
 /**
- * Transaction Data Transfer Object
+ * Cash Out Request Data Transfer Object
  * @Author MututwaM
  */
-public class TransactionDto {
+public class CashOutRequestDto {
 
-    private String mobileNumber;
-    private String bankId;
-    private BigDecimal amount;
-    private String refNumber;
-    private String extRefNumber;
-    private String trid;
+    public String mobileNumber;
+    public BigDecimal amount;
+    public String otp;
+    public String refNumber;
+    public String extRefNumber;
 
     public String getMobileNumber() {
         return mobileNumber;
@@ -23,20 +22,20 @@ public class TransactionDto {
         this.mobileNumber = mobileNumber;
     }
 
-    public String getBankId() {
-        return bankId;
-    }
-
-    public void setBankId(String bankId) {
-        this.bankId = bankId;
-    }
-
     public BigDecimal getAmount() {
         return amount;
     }
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public String getOtp() {
+        return otp;
+    }
+
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 
     public String getRefNumber() {
@@ -53,13 +52,5 @@ public class TransactionDto {
 
     public void setExtRefNumber(String extRefNumber) {
         this.extRefNumber = extRefNumber;
-    }
-
-    public String getTrid() {
-        return trid;
-    }
-
-    public void setTrid(String trid) {
-        this.trid = trid;
     }
 }

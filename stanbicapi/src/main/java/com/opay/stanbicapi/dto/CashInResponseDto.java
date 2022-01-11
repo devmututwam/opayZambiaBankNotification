@@ -1,24 +1,23 @@
 package com.opay.stanbicapi.dto;
 
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
 /**
- * Notify Transaction Data Transfer Object
+ * Cash In Response Data Transfer Object
  * @Author MututwaM
  */
-public class TransactionNotifyDto {
+public class CashInResponseDto {
 
-    private String mobileNumber;
-    private String message;
-    private String refNumber;
-    private String status;
-    private LocalDate date;
-    private Timestamp timestamp;
-    private BigDecimal amount;
-    private String trid;
+    public String mobileNumber;
+    public String status;
+    public String message;
+    public String refNumber;
+    public String statusCode;
+    public LocalDate date;
+    public Timestamp timestamp;
+    public BigDecimal amount;
 
     public String getMobileNumber() {
         return mobileNumber;
@@ -26,6 +25,14 @@ public class TransactionNotifyDto {
 
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getMessage() {
@@ -44,12 +51,12 @@ public class TransactionNotifyDto {
         this.refNumber = refNumber;
     }
 
-    public String getStatus() {
-        return status;
+    public String getStatusCode() {
+        return statusCode;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
     }
 
     public LocalDate getDate() {
@@ -74,13 +81,5 @@ public class TransactionNotifyDto {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
-    }
-
-    public String getTrid() {
-        return trid;
-    }
-
-    public void setTrid(String trid) {
-        this.trid = trid;
     }
 }

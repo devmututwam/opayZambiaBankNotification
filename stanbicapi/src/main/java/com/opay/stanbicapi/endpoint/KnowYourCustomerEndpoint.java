@@ -1,19 +1,17 @@
 package com.opay.stanbicapi.endpoint;
 
 
-import com.opay.stanbicapi.dto.KycDto;
+import com.opay.stanbicapi.dto.KnowYourCustmomerDto;
 import com.opay.stanbicapi.service.KnowYourCustomerService;
 import com.opay.stanbicapi.utils.ResponseConstants;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 /**
  * Know Your Customer EndPoint
@@ -40,22 +38,23 @@ public class KnowYourCustomerEndpoint {
      * @return responseKycDto
      */
     @PostMapping(value = "/opay/kyc", produces = "application/json")
-    public KycDto getCustomerDetails(@RequestBody String mobileNumber, BindingResult result) {
+    public KnowYourCustmomerDto getCustomerDetails(@RequestBody String mobileNumber, BindingResult result) {
 
-        KycDto responseKycDto = new KycDto();
+        KnowYourCustmomerDto responseKnowYourCustmomerDto = new KnowYourCustmomerDto();
 
         try {
-            responseKycDto = knowYourCustomerService.getCustomerDetails(mobileNumber);
+            responseKnowYourCustmomerDto = knowYourCustomerService.getCustomerDetails(mobileNumber);
         } catch (Exception e) {
 
-            responseKycDto.setStatus(ResponseConstants.STATUS_ERROR);
+            responseKnowYourCustmomerDto.setStatus(ResponseConstants.STATUS_ERROR);
+            e.printStackTrace();
 
-            return responseKycDto;
+            return responseKnowYourCustmomerDto;
         }
 
-        responseKycDto.setStatus(ResponseConstants.STATUS_SUCCESS);
+        responseKnowYourCustmomerDto.setStatus(ResponseConstants.STATUS_SUCCESS);
 
-        return responseKycDto;
+        return responseKnowYourCustmomerDto;
     }
 
 
