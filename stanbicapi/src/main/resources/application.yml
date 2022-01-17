@@ -1,14 +1,16 @@
 #ssoServiceUrl: https://cmsso.zra.org.zm/auth
 #ssoServiceUrl: https://172.17.2.55:7001/auth
 server:
-  port: 8080
+  port: 7002
+  #port: 6666
   servlet:
     session:
       cookie:
         #name: JSESSIONID
         max-age: 3600
       timeout: 15m
-    context-path: /opay
+    #context-path: /opay
+    context-path: /
   error:
     whitelabel:
       enabled: false
