@@ -1,6 +1,7 @@
 package com.opay.stanbicapi.endpoint;
 
 
+import com.opay.stanbicapi.dto.KYCRequestDto;
 import com.opay.stanbicapi.dto.KnowYourCustmomerDto;
 import com.opay.stanbicapi.service.KnowYourCustomerService;
 import com.opay.stanbicapi.utils.ResponseConstants;
@@ -33,17 +34,17 @@ public class KnowYourCustomerEndpoint {
 
     /**
      * Application Endpoint to fetch customer details
-     * @param mobileNumber
+     * @param kycRequestDto
      * @param result
      * @return responseKycDto
      */
     @PostMapping(value = "/opay/kyc", produces = "application/json")
-    public KnowYourCustmomerDto getCustomerDetails(@RequestBody String mobileNumber, BindingResult result) {
+    public KnowYourCustmomerDto getCustomerDetails(@RequestBody KYCRequestDto kycRequestDto, BindingResult result) {
 
         KnowYourCustmomerDto responseKnowYourCustmomerDto = new KnowYourCustmomerDto();
 
         try {
-            responseKnowYourCustmomerDto = knowYourCustomerService.getCustomerDetails(mobileNumber);
+            responseKnowYourCustmomerDto = knowYourCustomerService.getCustomerDetails(kycRequestDto);
         } catch (Exception e) {
 
             responseKnowYourCustmomerDto.setStatus(ResponseConstants.STATUS_ERROR);

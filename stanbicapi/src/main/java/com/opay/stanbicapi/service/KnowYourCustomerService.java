@@ -1,6 +1,7 @@
 package com.opay.stanbicapi.service;
 
 
+import com.opay.stanbicapi.dto.KYCRequestDto;
 import com.opay.stanbicapi.dto.KnowYourCustmomerDto;
 import com.opay.stanbicapi.utils.ResponseConstants;
 import org.springframework.stereotype.Service;
@@ -18,17 +19,17 @@ public class KnowYourCustomerService {
 
     /**
      * Service method to extract the details given the customer mobile number
-     * @param mobileNumber
+     * @param kycRequestDto
      * @return kycDto
      */
-    public KnowYourCustmomerDto getCustomerDetails(String mobileNumber){
+    public KnowYourCustmomerDto getCustomerDetails(KYCRequestDto kycRequestDto){
 
         KnowYourCustmomerDto response = new KnowYourCustmomerDto();
 
         Timestamp currentTime = new Timestamp(System.currentTimeMillis());
 
         //validate to ensure the mobile number field is not empty
-        if("".equalsIgnoreCase(mobileNumber)){
+        if("".equalsIgnoreCase(kycRequestDto.getMobileNumber())){
             response.setStatus(ResponseConstants.STATUS_ERROR);
             response.setMessage("No information received. Mobile number field empty");
             return response;
